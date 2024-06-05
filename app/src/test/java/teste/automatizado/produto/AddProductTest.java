@@ -24,7 +24,7 @@ public class AddProductTest {
     }
 
     @Test
-    void SearchProduct() {
+    void AddproductABag() {
         String codeProductTest = "606674641";
         String username = config.getUsername();
         String password = config.getPassword();
@@ -32,5 +32,7 @@ public class AddProductTest {
         addProduct.searchProduct(codeProductTest);
         addProduct.selectFirstProduct();
         assertTrue(addProduct.verifyFirstProduct(codeProductTest).getText().contains(codeProductTest));
+        addProduct.addCarProduct();
+        assertTrue(addProduct.isPage("https://hml01.lojasrenner.com.br/sacola"));
     }
 }
