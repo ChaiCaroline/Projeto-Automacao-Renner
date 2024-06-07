@@ -6,22 +6,18 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import teste.automatizado.ConfigLoader;
-
 public class LoginTest {
     private LoginHomePage pageHome;
-    private ConfigLoader config;
 
     @BeforeEach
     void setup() {
-        this.config = new ConfigLoader();
-        this.pageHome = new LoginHomePage();
+        pageHome = new LoginHomePage();
         pageHome.openModalLogin();
     }
 
     @AfterEach
     void AfterEach() {
-        LoginHomePage.fechar();
+        this.pageHome.fechar();
     }
 
     @Test
@@ -31,15 +27,15 @@ public class LoginTest {
 
     @Test
     void testLoginSuccess() {
-        String username = config.getUsername();
-        String password = config.getPassword();
+        String username = pageHome.config.getUsername();
+        String password = pageHome.config.getPassword();
         pageHome.loginValidUser(username, password);
         assertTrue(pageHome.getUserLogged().equals("Chaiene"));
     }
 
     @Test
     void testLoginFail() {
-        String username = config.getUsername();
+        String username = pageHome.config.getUsername();
         pageHome.loginValidUser(username, "senha");
         assertTrue(pageHome.openModalMessageLogin().isDisplayed());
     }

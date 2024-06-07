@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import teste.automatizado.ConfigLoader;
+import teste.automatizado.login.LoginHomePage;
 
 public class AddProductTest {
     private ConfigLoader config;
@@ -15,20 +16,21 @@ public class AddProductTest {
     @BeforeEach
     void setup() {
         this.config = new ConfigLoader();
-        this.addProduct = new AddProductPage();
+        LoginHomePage LoginPage = new LoginHomePage();
+        LoginPage.openModalLogin();
+        String username = config.getUsername();
+        String password = config.getPassword();
+        addProduct = LoginPage.loginValidUser(username, password);
     }
 
-    @AfterEach
-    void AfterEach() {
-        AddProductPage.fechar();
-    }
+    // @AfterEach
+    // void AfterEach() {
+    // AddProductPage.fechar();
+    // }
 
     @Test
     void AddproductABag() {
         String codeProductTest = "606674641";
-        String username = config.getUsername();
-        String password = config.getPassword();
-        addProduct.loginSite(username, password);
         addProduct.searchProduct(codeProductTest);
         addProduct.selectFirstProduct();
         assertTrue(addProduct.verifyFirstProduct(codeProductTest).getText().contains(codeProductTest));

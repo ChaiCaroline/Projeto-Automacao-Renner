@@ -32,8 +32,8 @@ public class OrderPage extends PageObject {
     private By myBag = By.cssSelector(".checkout_cart");
 
     public OrderPage() {
-        super();
-        driver = PageObject.initializeDriver();
+        super(null);
+        // driver = PageObject.initializeDriver();
         ConfigLoader config = new ConfigLoader();
         driver.get(config.getUrl());
     }

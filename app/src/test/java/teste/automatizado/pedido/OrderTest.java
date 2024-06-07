@@ -23,10 +23,10 @@ public class OrderTest {
         // this.addProduct = new AddProductPage();
     }
 
-    @AfterEach
-    void AfterEach() {
-        OrderPage.fechar();
-    }
+    // @AfterEach
+    // void AfterEach() {
+    // OrderPage.fechar();
+    // }
 
     @Test
     void finallyMethod() throws InterruptedException {
