@@ -5,39 +5,34 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebElement;
 
-import teste.automatizado.ConfigLoader;
-import teste.automatizado.pedido.OrderPage;
-//import teste.automatizado.produto.AddProductPage;
+import teste.automatizado.login.LoginHomePage;
+import teste.automatizado.produto.AddProductPage;
 
 public class OrderTest {
-    private ConfigLoader config;
     private OrderPage checkPage;
-    // private AddProductPage addProduct;
 
     @BeforeEach
     void setup() {
-        this.config = new ConfigLoader();
-        this.checkPage = new OrderPage();
-        // this.addProduct = new AddProductPage();
+        // this.config = new ConfigLoader();
+        LoginHomePage LoginPage = new LoginHomePage();
+        LoginPage.openModalLogin();
+        String username = LoginPage.config.getUsername();
+        String password = LoginPage.config.getPassword();
+        AddProductPage addProduct = LoginPage.loginValidUser(username, password);
+        this.checkPage = new OrderPage(addProduct.driver);
+
     }
 
-    // @AfterEach
-    // void AfterEach() {
-    // OrderPage.fechar();
-    // }
+    @AfterEach
+    void AfterEach() {
+        checkPage.fechar();
+    }
 
     @Test
     void finallyMethod() throws InterruptedException {
-        String codeProductTest = "606674641";
-        String username = config.getUsername();
-        String password = config.getPassword();
-        checkPage.loginSite(username, password);
-        checkPage.searchProduct(codeProductTest);
-        checkPage.selectFirstProduct();
-        checkPage.addCarProduct();
-        checkPage.finishShopping();
+        // checkPage.finishShopping();
+        checkPage.clickSacola();
         checkPage.firstCheck();
         checkPage.secondCheck();
         assertTrue(checkPage.paymentVisible());

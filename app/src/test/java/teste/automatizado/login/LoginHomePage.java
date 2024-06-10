@@ -37,9 +37,9 @@ public class LoginHomePage extends PageObject {
 
         inputUser.sendKeys(username);
         inputPass.sendKeys(password);
-        this.driver.findElement(By.cssSelector(".modal-login__form-action > .Button_button__vcDFE")).click();
+        driver.findElement(By.cssSelector(".modal-login__form-action > .Button_button__vcDFE")).click();
 
-        return new AddProductPage(this.driver);
+        return new AddProductPage(driver);
     }
 
     public String getUserLogged() {

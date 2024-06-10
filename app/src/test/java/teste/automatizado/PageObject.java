@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class PageObject {
-    protected WebDriver driver;
+    public WebDriver driver;
     protected WebDriverWait wait;
     public ConfigLoader config;
 

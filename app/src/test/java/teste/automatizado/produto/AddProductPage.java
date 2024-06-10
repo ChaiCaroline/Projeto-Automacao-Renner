@@ -9,13 +9,13 @@ import teste.automatizado.PageObject;
 
 public class AddProductPage extends PageObject {
     private By inputSearch = By.name("Ntt");
-    private By buttonCar = By.className("ProductInformation_actionBuy__8RfyL");
+    private By buttonCar = By.cssSelector(".ProductInformation_actionBuy__8RfyL");
     private By codeProduct = By
             .cssSelector(".ProductTitle_ref__YJWpm > small");
     private By myBag = By.cssSelector(".checkout_cart");
 
     public AddProductPage(WebDriver driver) {
-        super(null);
+        super(driver);
         this.driver = driver;
     }
 
@@ -38,7 +38,10 @@ public class AddProductPage extends PageObject {
         return code;
     }
 
-    public WebElement addCarProduct() {
+    public WebElement addCarProduct() throws InterruptedException {
+        Thread.sleep(1000);
+        wait.until(ExpectedConditions
+                .presenceOfElementLocated(By.cssSelector(".ReactProductDetails_productDetails__mX3Ex")));
         WebElement buttonCarVisible = wait.until(ExpectedConditions.visibilityOfElementLocated(buttonCar));
         buttonCarVisible.click();
         return buttonCarVisible;

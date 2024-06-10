@@ -9,6 +9,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'io.qameta.allure' version '2.9.6'
 }
 
 repositories {
@@ -16,7 +17,20 @@ repositories {
     mavenCentral()
 }
 
+
+// Define the version of Allure you want to use via the allureVersion property
+def allureVersion = "2.27.0"
+
 dependencies {
+    // Import allure-bom to ensure correct versions of all the dependencies are used
+    testImplementation platform("io.qameta.allure:allure-bom:$allureVersion")
+    // Add necessary Allure dependencies to dependencies section
+    testImplementation "io.qameta.allure:allure-cucumber7-jvm"
+    testImplementation "io.qameta.allure:allure-junit-platform"
+
+    testImplementation 'io.qameta.allure:allure-java-commons:2.13.9'
+    testImplementation 'io.qameta.allure:allure-junit5:2.13.9'
+
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
 
@@ -24,7 +38,13 @@ dependencies {
     implementation 'com.google.guava:guava:31.1-jre'
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.20.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
+
+    // Cucumber
+    testImplementation 'io.cucumber:cucumber-java:7.18.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.18.0'
 }
+
+
 
 application {
     // Define the main class for the application.
@@ -35,3 +55,15 @@ tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+allure {
+    version = '2.27.0'
+    autoconfigure = true
+    aspectjweaver = true
+}
+
+// task cleanAllureResults(type: Delete) {
+//     delete fileTree(dir: 'build/allure-results')
+// }
+ 
+// tasks.allureReport.dependsOn cleanAllureResults
