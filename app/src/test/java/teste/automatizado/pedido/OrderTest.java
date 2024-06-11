@@ -14,12 +14,10 @@ public class OrderTest {
 
     @BeforeEach
     void setup() {
-        // this.config = new ConfigLoader();
         LoginHomePage LoginPage = new LoginHomePage();
         LoginPage.openModalLogin();
-        String username = LoginPage.config.getUsername();
-        String password = LoginPage.config.getPassword();
-        AddProductPage addProduct = LoginPage.loginValidUser(username, password);
+        AddProductPage addProduct = LoginPage.loginValidUser(LoginPage.config.getUsername(),
+                LoginPage.config.getPassword());
         this.checkPage = new OrderPage(addProduct.driver);
 
     }
@@ -31,11 +29,12 @@ public class OrderTest {
 
     @Test
     void finallyMethod() throws InterruptedException {
-        // checkPage.finishShopping();
         checkPage.clickSacola();
         checkPage.firstCheck();
         checkPage.secondCheck();
         assertTrue(checkPage.paymentVisible());
+        checkPage.pagymentCheck();
+        assertTrue(checkPage.page("https://hml01.lojasrenner.com.br/confirmacao-pedido"));
     }
 
 }

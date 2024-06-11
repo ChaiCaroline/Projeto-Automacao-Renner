@@ -33,4 +33,8 @@ public abstract class PageObject {
         this.driver.quit();
     }
 
+    public boolean page(String pageAcess) {
+        return this.driver.getCurrentUrl().equals(pageAcess);
+    }
+
 }
