@@ -1,51 +1,40 @@
 # Projeto de Automação - Site Renner
 
-<div align="left">
-<img width="12" />
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" height="40" alt="jest logo"  />
-<img width="12" />
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" height="40" alt="java logo"  />
-<img width="12" />
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="react logo"  />
-<img width="12" />
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" height="40" alt="selenium logo"  />
-<img width="12" />
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" height="40" alt="vscode logo"  />
-<img width="12" />
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" alt="html5 logo"  />
-<img width="12" />
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" height="40" alt="google logo"  />
-<img width="12" />
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="40" alt="css3 logo"  />
-</div>
- 
+[![My Skills](https://skillicons.dev/icons?i=js,css,github,gmail,gherkin,gradle,java,jest,maven,spring,selenium,vscode)](https://skillicons.dev)
+
 ###
- 
+
 # Descrição do Projeto
- 
+
 Este projeto tem como objetivo colocar em prática os meus conhecimentos adquiridos em automação de testes utilizando Selenium com Java e Gradle. Para isso, realizei diversos testes automatizados no site da Renner. Esses testes foram desenvolvidos com o intuito de explorar e validar diferentes funcionalidades do site, porém com o foco **em devolução de Pedidos**, aplicando os conceitos fundamentais de automação.
- 
+
 ## Objetivos
- 
+
 - Praticar a automação de testes com Selenium
 - Validar funcionalidades do site da Renner
 - Validando funcionalidades na seção de devolução de pedido
 - Implementar boas práticas de desenvolvimento de testes automatizados
- 
+
 ## Tecnologias Utilizadas
- 
+
 - Java
 - Selenium WebDriver
 - Gradle
 - JUnit
- 
+- Cucumbur
+- Allure Report
+
 ## Quantidades de Testes
 
-Atualmente tem no total 4 testes, sendo atualizando diariamente.
+Atualmente o projeto está com no total 9 testes.
 
-<div align="left">
-<img width="12" />
-<img src="./testes.png" height="40" alt="Quantidade de Testes"  />
+- Teste em Login do usuário;
+- Adicionar produto ao carrinho;
+- Finalizar uma compra;
+
+<div align="center">
+<img src="./image/AllureReport1.png" height="300" alt="Quantidade de Testes"  />
+<img src="./image/AllureReport-test-12.06.png" height="300" alt="Quantidade de Testes"  />
 </div>
 
 ## Como Executar os Testes
@@ -63,14 +52,28 @@ Atualmente tem no total 4 testes, sendo atualizando diariamente.
    ```
 
 3. Execute os testes usando Gradle:
+
    ```sh
    ./gradlew test
    ```
 
+4. Para criar a pasta do Allure Report
+
+   ```sh
+   ./gradlew allureReport
+   ```
+
+5. Para gerar a página com os testes do Allure Report
+   ```sh
+   ./gradlew allureServe
+   ```
+
 ## Estrutura do Projeto
 
-- `src/test/java`: Contém os testes automatizados
+- `src/test/java/teste/automatizado`: Contém os testes automatizados
+- `src/test/java/teste/acceptance/steps`: Contém os BDD's dos testes automatizados
 - `src/main/resources`: Contém arquivos de configuração e dados de teste
+- `src/main/resources/features`: Contém os cenarios e os BDD's dos testes.
 
 Este projeto é um passo importante na minha jornada de aprendizado em automação de testes.
 

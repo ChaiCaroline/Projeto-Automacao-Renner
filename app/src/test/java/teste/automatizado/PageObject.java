@@ -24,17 +24,26 @@ public abstract class PageObject {
             this.driver = new ChromeDriver(options);
         }
 
-        wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
+        // Tempo de espera por utilizar o wait.util de forma explicita
+        wait = new WebDriverWait(this.driver, Duration.ofSeconds(15));
+
+        // Instanciamos as configurações, para ter acesso dados sensiveis, como url,
+        // login e senha.
         config = new ConfigLoader();
-        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        // Iremos definir um Timeout para em caso de não encontrar o elemento na página.
+        // De forma implicita
+        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
     }
 
+    // Configurar para fechar.
     public void fechar() {
         this.driver.quit();
     }
 
-    public boolean page(String pageAcess) {
-        return this.driver.getCurrentUrl().equals(pageAcess);
+    // Para ter acesso a url da página atual, e comparar.
+    public String page() {
+        return this.driver.getCurrentUrl();
     }
 
 }

@@ -22,7 +22,7 @@ public class LoginTest {
 
     @Test
     void openModalLogin() {
-        assertTrue(pageHome.selectedModalLogin().isDisplayed());
+        assertTrue(pageHome.openModalLogin().isDisplayed());
     }
 
     @Test
@@ -30,13 +30,13 @@ public class LoginTest {
         String username = pageHome.config.getUsername();
         String password = pageHome.config.getPassword();
         pageHome.loginValidUser(username, password);
-        assertTrue(pageHome.getUserLogged().equals("Chaiene"));
+        assertTrue(pageHome.userLogged("Chaiene"));
     }
 
     @Test
     void testLoginFail() {
         String username = pageHome.config.getUsername();
         pageHome.loginValidUser(username, "senha");
-        assertTrue(pageHome.openModalMessageLogin().isDisplayed());
+        assertTrue(pageHome.messagemErrorModalLogin().isDisplayed());
     }
 }

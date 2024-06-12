@@ -34,7 +34,7 @@ public class OrderTest {
         checkPage.secondCheck();
         assertTrue(checkPage.paymentVisible());
         checkPage.pagymentCheck();
-        assertTrue(checkPage.page("https://hml01.lojasrenner.com.br/confirmacao-pedido"));
+        assertTrue(checkPage.page().equals("https://hml01.lojasrenner.com.br/confirmacao-pedido"));
     }
 
 }
