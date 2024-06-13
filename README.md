@@ -34,7 +34,8 @@ Atualmente o projeto está com no total 9 testes.
 
 <div align="center">
 <img src="./image/AllureReport1.png" height="300" alt="Quantidade de Testes"  />
-<img src="./image/AllureReport-test-12.06.png" height="300" alt="Quantidade de Testes"  />
+<img src="./image/AllureReport-test.png" height="300" alt="Quantidade de Testes"  />
+<img src="./image/AllureReport-test2.pngg" height="300" alt="Quantidade de Testes"  />
 </div>
 
 ## Como Executar os Testes

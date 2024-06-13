@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import teste.automatizado.PageObject;
-import teste.automatizado.produto.AddProductPage;
+import teste.automatizado.pedido.AddProductPage;
 
 public class LoginHomePage extends PageObject {
 

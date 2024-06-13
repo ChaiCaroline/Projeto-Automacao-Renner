@@ -12,12 +12,15 @@ public abstract class PageObject {
     public WebDriver driver;
     protected WebDriverWait wait;
     public ConfigLoader config;
+    public String username;
+    public String password;
 
     public PageObject(WebDriver driver) {
         System.setProperty("webdriver.chrome.driver", "src/driver/chromedriver.exe");
 
         if (driver != null) {
             this.driver = driver;
+
         } else {
             ChromeOptions options = new ChromeOptions();
             options.setPageLoadStrategy(PageLoadStrategy.EAGER);
@@ -30,6 +33,8 @@ public abstract class PageObject {
         // Instanciamos as configurações, para ter acesso dados sensiveis, como url,
         // login e senha.
         config = new ConfigLoader();
+        this.username = config.getUsername();
+        this.password = config.getPassword();
 
         // Iremos definir um Timeout para em caso de não encontrar o elemento na página.
         // De forma implicita

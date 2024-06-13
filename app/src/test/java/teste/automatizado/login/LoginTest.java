@@ -12,6 +12,7 @@ public class LoginTest {
     @BeforeEach
     void setup() {
         pageHome = new LoginHomePage();
+        pageHome.buttonOpenModal().click();
         pageHome.openModalLogin();
     }
 
@@ -27,16 +28,13 @@ public class LoginTest {
 
     @Test
     void testLoginSuccess() {
-        String username = pageHome.config.getUsername();
-        String password = pageHome.config.getPassword();
-        pageHome.loginValidUser(username, password);
+        pageHome.loginValidUser(pageHome.username, pageHome.password);
         assertTrue(pageHome.userLogged("Chaiene"));
     }
 
     @Test
     void testLoginFail() {
-        String username = pageHome.config.getUsername();
-        pageHome.loginValidUser(username, "senha");
+        pageHome.loginValidUser(pageHome.username, "senha");
         assertTrue(pageHome.messagemErrorModalLogin().isDisplayed());
     }
 }

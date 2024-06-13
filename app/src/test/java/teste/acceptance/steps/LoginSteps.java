@@ -75,6 +75,7 @@ public class LoginSteps {
     @E("o usuario clicar em fazer login atraves do facebook ou google")
     public void o_usuario_clicar_em_fazer_login_atraves_do_facebook_ou_google() {
         loginPage.clickLoginSocial();
+        System.out.println(loginPage.driver);
     }
 
     @Entao("devera abrir uma tela para o usuario selecionar o email associado a sua conta")
